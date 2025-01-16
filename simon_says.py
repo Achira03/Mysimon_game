@@ -37,3 +37,10 @@ class SimonSaysApp(App):
         self.start_button = Button(text="Start Game", size_hint=(1, 0.2), font_size=20)
         self.start_button.bind(on_press=self.start_game)
         self.root.add_widget(self.start_button)
+        
+        #ไฟกระพริบสำหรับปุ่มที่ผู้เล่นต้องกด
+    def flash_button(self, btn_name):
+        btn = self.buttons[btn_name]
+        original_color = btn.background_color
+        btn.background_color = [1, 0, 0, 1]  # ไฟกระพิบสีแดง
+        Clock.schedule_once(lambda dt: self.restore_button_color(btn, original_color), 0.3)
