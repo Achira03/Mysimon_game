@@ -38,6 +38,10 @@ class SimonSaysApp(App):
         self.start_button.bind(on_press=self.start_game)
         self.root.add_widget(self.start_button)
         
+    def build(self):
+        #ใช้return __init__
+        return self.root
+        
         #ไฟกระพริบสำหรับปุ่มที่ผู้เล่นต้องกด
     def flash_button(self, btn_name):
         btn = self.buttons[btn_name]
