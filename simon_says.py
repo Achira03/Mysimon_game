@@ -48,3 +48,31 @@ class SimonSaysApp(App):
         original_color = btn.background_color
         btn.background_color = [1, 0, 0, 1]  # ไฟกระพิบสีแดง
         Clock.schedule_once(lambda dt: self.restore_button_color(btn, original_color), 0.3)
+        
+    #ฟังก์ชั่นสำหรับเช็คว่าผู้เล่นกดปุ่มถูกต้องตามลำดับมั้ย    
+    def check_user_input(self):
+        for i in range(len(self.user_sequence)):
+            if self.user_sequence[i] != self.sequence[i]:
+                self.info_label.text = f"Game Over! You scored: {self.score}"
+                self.is_user_turn = False
+                if self.score > self.high_score:  # บันทึกคะแนนสูงสุดใหม่
+                    self.high_score = self.score
+                    self.save_high_score()
+                return
+
+        if len(self.user_sequence) == len(self.sequence):
+            self.score += 1
+            self.score_label.text = f"Score: {self.score}"
+            self.info_label.text = "Good job! Watch the next sequence!"
+            self.is_user_turn = False
+
+            # เพิ่มความเร็ว
+            self.speed = max(0.2, self.speed - 0.02)
+
+            # เพิ่มปุ่ม +2 ทุกๆ 5 คะแนน
+            if self.score % 5 == 0:  
+                self.total_buttons += 2
+                self.create_buttons()
+
+            #สำหรับเริ่มรอบใหม่
+            Clock.schedule_once(self.next_round, 1)
