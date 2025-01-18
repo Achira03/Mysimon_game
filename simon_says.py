@@ -4,6 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.clock import Clock
+from pathlib import Path
 import random
 
 # สร้างคลาส SimonSays
@@ -13,7 +14,7 @@ class SimonSaysApp(App):
         self.sequence = []  
         self.user_sequence = []  
         self.score = 0  
-        self.high_score = self.load_high_score()  
+        self.high_score = self.load_high_score()
         self.is_user_turn = False  
         self.speed = 0.5  
         self.total_buttons = 4  
@@ -41,6 +42,23 @@ class SimonSaysApp(App):
     def build(self):
         #ใช้return __init__
         return self.root
+    
+    def create_buttons(self): #ฟังก์ชั่นสร้างปุ่มใหม่
+        for i in range(self.total_buttons):
+            btn_name = f"btn_{i}"
+            if btn_name not in self.buttons:
+                #กำหนดรูปแบบปุ่ม  
+                btn = Button(
+                    background_normal='',
+                    background_color=[1, 1, 1, 1],
+                    on_press=self.on_button_press
+                )                                  #[1, 1, 1, 1] คือสีขาว
+                btn.color_name = btn_name
+                self.buttons[btn_name] = btn
+                self.grid.add_widget(btn)
+
+        # ปรับจำนวนคอลัมน์ตามจำนวนปุ่มเพื่อให้ดูสมดุล โดยใช้สแควรูท (**0.5)
+        self.grid.cols = int(len(self.buttons) ** 0.5)
         
         #ไฟกระพริบสำหรับปุ่มที่ผู้เล่นต้องกด
     def flash_button(self, btn_name):
@@ -76,3 +94,16 @@ class SimonSaysApp(App):
 
             #สำหรับเริ่มรอบใหม่
             Clock.schedule_once(self.next_round, 1)
+            
+    
+
+    def load_high_score(self):
+        file = Path('high_score.txt') 
+        if file.exists():  # เช็คว่าไฟล์มีอยู่มั้ย
+            return int(file.read_text()) 
+        else:
+            return 0  # ถ้าไม่มีไฟล์จะคืนค่า 0
+
+
+if __name__ == "__main__":
+    SimonSaysApp().run()
