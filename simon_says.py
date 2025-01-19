@@ -60,6 +60,17 @@ class SimonSaysApp(App):
         # ปรับจำนวนคอลัมน์ตามจำนวนปุ่มเพื่อให้ดูสมดุล โดยใช้สแควรูท (**0.5)
         self.grid.cols = int(len(self.buttons) ** 0.5)
         
+    def restart_game(self, instance):
+        self.start_button.text = "Restart Game"
+        self.sequence = []  # รีเซ็ทลำดับปุ่มเพื่อเริ่มใหม่
+        self.user_sequence = [] #รีเซ็ทลำดับปุ่มที่ผู้เล่นเคยกดไว้
+        self.score = 0
+        self.speed = 0.5  
+        self.score_label.text = "Score: 0"
+        self.info_label.text = f"High Score: {self.high_score}"
+        self.add_to_sequence()
+        Clock.schedule_once(self.play_sequence, 1)
+        
         #ไฟกระพริบสำหรับปุ่มที่ผู้เล่นต้องกด
     def flash_button(self, btn_name):
         btn = self.buttons[btn_name]
@@ -95,8 +106,6 @@ class SimonSaysApp(App):
             #สำหรับเริ่มรอบใหม่
             Clock.schedule_once(self.next_round, 1)
             
-    
-
     def load_high_score(self):
         file = Path('high_score.txt') 
         if file.exists():  # เช็คว่าไฟล์มีอยู่มั้ย
