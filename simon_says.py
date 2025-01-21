@@ -71,6 +71,10 @@ class SimonSaysApp(App):
         self.add_to_sequence()
         Clock.schedule_once(self.play_sequence, 1)
         
+    def add_to_sequence(self): #สุ่มลำดับของปุ่ม
+        btn_names = list(self.buttons.keys())
+        self.sequence.append(random.choice(btn_names))
+        
         #ไฟกระพริบสำหรับปุ่มที่ผู้เล่นต้องกด
     def flash_button(self, btn_name):
         btn = self.buttons[btn_name]
