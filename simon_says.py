@@ -68,10 +68,11 @@ class SimonSaysApp(App):
         self.speed = 0.5  
         self.score_label.text = "Score: 0"
         self.info_label.text = f"High Score: {self.high_score}"
-        self.add_to_sequence()
+        self.random_button()
         Clock.schedule_once(self.play_sequence, 1)
         
-    def add_to_sequence(self): #สุ่มลำดับของปุ่ม
+    def random_button(self): #สุ่มลำดับของปุ่ม
+        
         btn_names = list(self.buttons.keys())
         self.sequence.append(random.choice(btn_names))
         
