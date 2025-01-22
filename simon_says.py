@@ -72,9 +72,16 @@ class SimonSaysApp(App):
         Clock.schedule_once(self.play_sequence, 1)
         
     def random_button(self): #สุ่มลำดับของปุ่ม
-        
         btn_names = list(self.buttons.keys())
         self.sequence.append(random.choice(btn_names))
+        
+    def play_sequence(self, dt):  #ไว้สำหรับให้ผู้เล่นเริ่มหลังจากปุ่มลำดับกระพริบ
+        self.user_sequence = []  
+        delay = max(0.2, self.speed)  # ตั้งค่าdelayการกระพริบ
+        for i, btn_name in enumerate(self.sequence):
+            Clock.schedule_once(lambda dt, name=btn_name: self.flash_button(name), delay * (i + 1))
+        Clock.schedule_once(lambda dt: self.start_user_turn(), delay * (len(self.sequence) + 1))
+
         
         #ไฟกระพริบสำหรับปุ่มที่ผู้เล่นต้องกด
     def flash_button(self, btn_name):
