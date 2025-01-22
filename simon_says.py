@@ -90,6 +90,10 @@ class SimonSaysApp(App):
         btn.background_color = [1, 0, 0, 1]  # ไฟกระพิบสีแดง
         Clock.schedule_once(lambda dt: self.restore_button_color(btn, original_color), 0.3)
         
+    def restore_button_color(self, btn, original_color):
+        btn.background_color = original_color  # เปลี่ยนกลับเป็นสีเดิมหลังจาก flash_button ทำงาน
+
+        
     #ฟังก์ชั่นสำหรับเช็คว่าผู้เล่นกดปุ่มถูกต้องตามลำดับมั้ย    
     def check_user_input(self):
         for i in range(len(self.user_sequence)):
