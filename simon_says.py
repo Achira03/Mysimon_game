@@ -98,6 +98,14 @@ class SimonSaysApp(App):
         self.info_label.text = "Your turn! Repeat the sequence!" #เริ่มต้นการเล่นของผู้เล่นโดยแสดงข้อความดังนี้
         self.is_user_turn = True
         
+    def on_button_press(self, instance):
+        if not self.is_user_turn: #ตรวจสอบว่าอยู่ในรอบการเล่นหรือไม่
+            return
+
+        self.user_sequence.append(instance.color_name) #บันทึกชื่อปุ่มลงใน user_sequence
+        self.check_user_input()
+
+        
 
     #ฟังก์ชั่นสำหรับเช็คว่าผู้เล่นกดปุ่มถูกต้องตามลำดับมั้ย    
     def check_user_input(self):
