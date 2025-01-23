@@ -5,7 +5,12 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.clock import Clock
 from pathlib import Path
+from kivy.uix.screenmanager import ScreenManager,Screen
 import random
+
+#สร้างคลาสสำหรับหน้าเลือกระดับความยาก
+class DifficultyScreen(Screen):
+    pass
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(App):
@@ -134,6 +139,14 @@ class SimonSaysApp(App):
 
             #สำหรับเริ่มรอบใหม่
             Clock.schedule_once(self.next_round, 1)
+            
+    def next_round(self, dt):
+        self.random_button()
+        self.play_sequence(0)
+            
+    def save_high_score(self):
+        with open('high_score.txt', 'w') as f:
+            f.write(str(self.high_score))
             
     def load_high_score(self):
         file = Path('high_score.txt') 
