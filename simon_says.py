@@ -10,7 +10,13 @@ import random
 
 #สร้างคลาสสำหรับหน้าเลือกระดับความยาก
 class DifficultyScreen(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical', spacing=20, padding=20)
+
+        label = Label(text="Select Difficulty", font_size=32, size_hint=(1, 0.3))
+        layout.add_widget(label)
+
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(App):
