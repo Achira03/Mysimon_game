@@ -21,6 +21,17 @@ class DifficultyScreen(Screen):
         self.easy_button = Button(text="Easy", font_size=24)
         self.medium_button = Button(text="Medium", font_size=24)
         self.hard_button = Button(text="Hard", font_size=24)
+        
+        self.easy_button.bind(on_press=lambda x: self.set_difficulty("Easy"))
+        self.medium_button.bind(on_press=lambda x: self.set_difficulty("Medium"))
+        self.hard_button.bind(on_press=lambda x: self.set_difficulty("Hard"))
+
+        layout.add_widget(self.easy_button)
+        layout.add_widget(self.medium_button)
+        layout.add_widget(self.hard_button)
+
+        self.add_widget(layout)
+
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(App):
