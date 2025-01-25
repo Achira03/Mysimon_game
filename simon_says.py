@@ -56,6 +56,13 @@ class SettingsScreen(Screen):
         self.volume_slider = Slider(min=0, max=100, value=50, size_hint=(1, 0.2))
         self.volume_slider.bind(value=self.update_volume)
         layout.add_widget(self.volume_slider)
+        
+        # ปุ่มกลับไปหน้าเกม
+        self.back_button = Button(text="Back to Game", size_hint=(1, 0.2), font_size=24)
+        self.back_button.bind(on_press=lambda x: self.manager.switch_to_game())
+        layout.add_widget(self.back_button)
+
+        self.add_widget(layout)
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(Screen):
