@@ -175,6 +175,12 @@ class SimonSaysApp(App):
             return int(file.read_text()) 
         else:
             return 0  # ถ้าไม่มีไฟล์จะคืนค่า 0
+        
+class PlaySimonSays(App):
+    def build(self):
+        sm = ScreenManager()
+        sm.difficulty = "Medium"  # กำหนดความยากเริ่มเป็น medium
+
 
 
 if __name__ == "__main__":
