@@ -180,7 +180,9 @@ class PlaySimonSays(App):
     def build(self):
         sm = ScreenManager()
         sm.difficulty = "Medium"  # กำหนดความยากเริ่มเป็น medium
-
+        sm.add_widget(DifficultyScreen(name="difficulty"))
+        sm.add_widget(SimonSaysApp(name="game"))
+        return sm
 
 
 if __name__ == "__main__":
