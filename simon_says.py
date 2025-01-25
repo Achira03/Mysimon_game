@@ -47,6 +47,11 @@ class SettingsScreen(Screen):
         label = Label(text="Settings", font_size=32, size_hint=(1, 0.3))
         layout.add_widget(label)
 
+        # ปุ่มเปิด/ปิดเสียง
+        self.sound_toggle = ToggleButton(text="Sound: ON", state="down", font_size=24)
+        self.sound_toggle.bind(on_press=self.toggle_sound)
+        layout.add_widget(self.sound_toggle)
+
 # สร้างคลาส SimonSays
 class SimonSaysApp(Screen):
     def __init__(self, **kwargs):
