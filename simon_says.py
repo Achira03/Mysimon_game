@@ -69,6 +69,9 @@ class SettingsScreen(Screen):
             instance.text = "Sound: ON"
         else:
             instance.text = "Sound: OFF"
+            
+    def set_volume(self, instance, value):
+        print(f"Volume set to {int(value)}")
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(Screen):
