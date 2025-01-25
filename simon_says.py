@@ -29,9 +29,13 @@ class DifficultyScreen(Screen):
         self.medium_button.bind(on_press=lambda x: self.set_difficulty("Medium"))
         self.hard_button.bind(on_press=lambda x: self.set_difficulty("Hard"))
 
+        self.settings_button = Button(text="Settings", font_size=24)
+        self.settings_button.bind(on_press=lambda x: self.manager.current_to_settings())
+
         layout.add_widget(self.easy_button)
         layout.add_widget(self.medium_button)
         layout.add_widget(self.hard_button)
+        layout.add_widget(self.settings_button)
 
         self.add_widget(layout)
 
@@ -54,7 +58,7 @@ class SettingsScreen(Screen):
         
         # สำหรับปรับระดับเสียง
         self.volume_slider = Slider(min=0, max=100, value=50, size_hint=(1, 0.2))
-        self.volume_slider.bind(value=self.update_volume)
+        self.volume_slider.bind(value=self.set_volume)
         layout.add_widget(self.volume_slider)
         
         # ปุ่มกลับไปหน้าเกม
@@ -268,6 +272,11 @@ class PlaySimonSays(App):
         sm.difficulty = "Medium"  # กำหนดความยากเริ่มเป็น medium
         sm.add_widget(DifficultyScreen(name="difficulty"))
         sm.add_widget(SimonSaysApp(name="game"))
+        sm.add_widget(SettingsScreen(name="settings"))
+
+        sm.switch_to_game = lambda: setattr(sm, 'current', 'game')
+        sm.current_to_settings = lambda: setattr(sm, 'current', 'settings')
+            
         return sm
 
 
