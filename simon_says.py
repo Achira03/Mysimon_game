@@ -32,6 +32,10 @@ class DifficultyScreen(Screen):
 
         self.add_widget(layout)
 
+    def set_difficulty(self, level):
+        self.manager.difficulty = level  # บันทึกระดับความยากในตัวแปร difficulty
+        self.manager.current = "game"  
+
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(App):
