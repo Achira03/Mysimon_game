@@ -255,6 +255,10 @@ class SimonSaysApp(Screen):
         else:
             return 0  # ถ้าไม่มีไฟล์จะคืนค่า 0
         
+    def pause_game(self, instance):
+        self.info_label.text = "Game Paused"
+        self.is_user_turn = False
+        
 class PlaySimonSays(App):
     def build(self):
         sm = ScreenManager()
