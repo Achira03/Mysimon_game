@@ -92,6 +92,11 @@ class SimonSaysApp(App):
         elif difficulty == "Hard":
             self.speed = 0.3
             self.total_buttons = 8
+            
+        # resetปุ่มใน GridLayout
+        self.grid.clear_widgets()
+        self.buttons.clear()
+        self.create_buttons()
 
     
     def create_buttons(self): #ฟังก์ชั่นสร้างปุ่มใหม่
