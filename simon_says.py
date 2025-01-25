@@ -51,6 +51,11 @@ class SettingsScreen(Screen):
         self.sound_toggle = ToggleButton(text="Sound: ON", state="down", font_size=24)
         self.sound_toggle.bind(on_press=self.toggle_sound)
         layout.add_widget(self.sound_toggle)
+        
+        # สำหรับปรับระดับเสียง
+        self.volume_slider = Slider(min=0, max=100, value=50, size_hint=(1, 0.2))
+        self.volume_slider.bind(value=self.update_volume)
+        layout.add_widget(self.volume_slider)
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(Screen):
