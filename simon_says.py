@@ -110,6 +110,15 @@ class SimonSaysApp(Screen):
         self.back_button.bind(on_press=self.back_to_screendifficulty)
         self.root.add_widget(self.back_button)
         
+        self.pause_button = Button(text="Pause Game", size_hint=(1, 0.2), font_size=20)
+        self.pause_button.bind(on_press=self.pause_game)
+        self.root.add_widget(self.pause_button)
+
+        self.settings_button = Button(text="Settings", size_hint=(1, 0.2), font_size=20)
+        self.settings_button.bind(on_press=lambda x: self.manager.current_to_settings())
+        self.root.add_widget(self.settings_button)
+
+        
         self.add_widget(self.root)
         
     def back_to_screendifficulty(self, instance):
