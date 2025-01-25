@@ -64,6 +64,12 @@ class SettingsScreen(Screen):
 
         self.add_widget(layout)
 
+    def toggle_sound(self, instance):
+        if instance.state == "down":
+            instance.text = "Sound: ON"
+        else:
+            instance.text = "Sound: OFF"
+
 # สร้างคลาส SimonSays
 class SimonSaysApp(Screen):
     def __init__(self, **kwargs):
