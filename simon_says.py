@@ -80,6 +80,20 @@ class SimonSaysApp(App):
         #ใช้return __init__
         return self.root
     
+    def on_pre_enter(self):
+        #กำหนดค่าตามระดับความยากเมื่อเข้าสู่ Game
+        difficulty = self.manager.difficulty
+        if difficulty == "Easy":
+            self.speed = 0.8
+            self.total_buttons = 4
+        elif difficulty == "Medium":
+            self.speed = 0.5
+            self.total_buttons = 6
+        elif difficulty == "Hard":
+            self.speed = 0.3
+            self.total_buttons = 8
+
+    
     def create_buttons(self): #ฟังก์ชั่นสร้างปุ่มใหม่
         for i in range(self.total_buttons):
             btn_name = f"btn_{i}"
