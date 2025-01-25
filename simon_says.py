@@ -6,6 +6,9 @@ from kivy.uix.label import Label
 from kivy.clock import Clock
 from pathlib import Path
 from kivy.uix.screenmanager import ScreenManager,Screen
+from kivy.uix.slider import Slider
+from kivy.uix.togglebutton import ToggleButton
+from kivy.clock import Clock
 import random
 
 #สร้างคลาสสำหรับหน้าเลือกระดับความยาก
@@ -36,6 +39,13 @@ class DifficultyScreen(Screen):
         self.manager.difficulty = level  # บันทึกระดับความยากในตัวแปร difficulty
         self.manager.current = "game"  
 
+class SettingsScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical', spacing=20, padding=20)
+
+        label = Label(text="Settings", font_size=32, size_hint=(1, 0.3))
+        layout.add_widget(label)
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(Screen):
