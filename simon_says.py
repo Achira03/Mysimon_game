@@ -69,6 +69,13 @@ class SimonSaysApp(App):
         self.start_button.bind(on_press=self.start_game)
         self.root.add_widget(self.start_button)
         
+     # ปุ่มกลับไปหน้าเลือกระดับความยาก
+        self.back_button = Button(text="Back to Difficulty", size_hint=(1, 0.2), font_size=20)
+        self.back_button.bind(on_press=self.back_to_screendifficulty)
+        self.root.add_widget(self.back_button)
+        
+        self.add_widget(self.root)
+        
     def build(self):
         #ใช้return __init__
         return self.root
