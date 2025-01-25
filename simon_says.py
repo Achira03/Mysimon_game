@@ -38,7 +38,7 @@ class DifficultyScreen(Screen):
 
 
 # สร้างคลาส SimonSays
-class SimonSaysApp(App):
+class SimonSaysApp(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.sequence = []  
@@ -66,7 +66,7 @@ class SimonSaysApp(App):
 
         # สำหรับสร้างปุ่มเริ่มเกม
         self.start_button = Button(text="Start Game", size_hint=(1, 0.2), font_size=20)
-        self.start_button.bind(on_press=self.start_game)
+        self.start_button.bind(on_press=self.restart_game)
         self.root.add_widget(self.start_button)
         
      # ปุ่มกลับไปหน้าเลือกระดับความยาก
@@ -75,6 +75,10 @@ class SimonSaysApp(App):
         self.root.add_widget(self.back_button)
         
         self.add_widget(self.root)
+        
+    def back_to_screendifficulty(self, instance):
+        #เปลี่ยนกลับไปหน้าเลือกระดับความยาก
+        self.manager.current = "difficulty"
         
     def build(self):
         #ใช้return __init__
@@ -216,4 +220,4 @@ class PlaySimonSays(App):
 
 
 if __name__ == "__main__":
-    SimonSaysApp().run()
+    PlaySimonSays().run()
