@@ -17,6 +17,10 @@ class DifficultyScreen(Screen):
         label = Label(text="Select Difficulty", font_size=32, size_hint=(1, 0.3))
         layout.add_widget(label)
 
+        # ปุ่มเลือกระดับความยาก
+        self.easy_button = Button(text="Easy", font_size=24)
+        self.medium_button = Button(text="Medium", font_size=24)
+        self.hard_button = Button(text="Hard", font_size=24)
 
 # สร้างคลาส SimonSays
 class SimonSaysApp(App):
