@@ -259,6 +259,9 @@ class SimonSaysApp(Screen):
         self.info_label.text = "Game Paused"
         self.is_user_turn = False
         
+    def restore_button_color(self, btn, original_color):
+        btn.background_color = original_color
+        
 class PlaySimonSays(App):
     def build(self):
         sm = ScreenManager()
