@@ -272,6 +272,15 @@ class SimonSaysApp(Screen):
     def restore_button_color(self, btn, original_color):
         btn.background_color = original_color
         
+    def skip_round(self, instance):
+        if self.score >= 5:  # ตรวจสอบว่ามีคะแนนพอให้ลบมั้ย
+            self.score -= 5 
+            self.score_label.text = f"Score: {self.score}" 
+            self.next_round(0)  # ข้ามไปเล่นรอบถัดไป
+        else:
+            self.info_label.text = "Not enough points to skip!"  # แจ้งเตือนถ้าคะแนนไม่พอ
+
+        
 class PlaySimonSays(App):
     def build(self):
         sm = ScreenManager()
