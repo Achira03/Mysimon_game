@@ -121,6 +121,12 @@ class SimonSaysApp(Screen):
         self.settings_button = Button(text="Settings", size_hint=(1, 0.2), font_size=20)
         self.settings_button.bind(on_press=lambda x: self.manager.current_to_settings())
         self.root.add_widget(self.settings_button)
+        
+        # สำหรับข้ามด่านแต่จะโดนลบ 5 คะแนน
+        self.skip_button = Button(text="Skip Round (-5 points)", size_hint=(1, 0.2), font_size=20)
+        self.skip_button.bind(on_press=self.skip_round)  
+        self.root.add_widget(self.skip_button)
+
 
         
         self.add_widget(self.root)
